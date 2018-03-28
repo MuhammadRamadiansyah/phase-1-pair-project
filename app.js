@@ -25,6 +25,14 @@ app.get('/', function(req, res){
     res.render('home');
 });
 
+app.get('/register', function(req, res){
+    res.render('register');
+});
+
+app.get('/lecturer', function(req, res){
+    res.render('lecturer-profile');
+});
+
 app.listen(3000, ()=>{
     console.log('server started in port 3000')
 });

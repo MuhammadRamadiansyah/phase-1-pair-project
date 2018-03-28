@@ -1,53 +1,6 @@
-<html>
-    <head>
-        <title>Go Project !</title>        
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- style -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    </head>
-    <body>
-        <!-- navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
-            <div class="container">
-                <a class="navbar-brand" href="#">Go Project !</a>
-                <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
-                    &#9776;
-                </button>
-                <div class="collapse navbar-collapse" id="exCollapsingNavbar">
-                    <div class="nav navbar-nav flex-row justify-content-between ml-auto">
-                        <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </form>
-                    </div>  
-                    <ul class="nav navbar-nav flex-row justify-content-between ml-auto">                        
-                        <li class="dropdown order-1">
-                            <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-success dropdown-toggle">Login <span class="caret"></span></button>
-                            <ul class="dropdown-menu dropdown-menu-right mt-1">
-                                <li class="p-3">
-                                    <form class="form" role="form">
-                                        <div class="form-group">
-                                            <input id="emailInput" placeholder="Email" class="form-control form-control-sm" type="text" required="">
-                                        </div>
-                                        <div class="form-group">
-                                            <input id="passwordInput" placeholder="Password" class="form-control form-control-sm" type="text" required="">
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-primary btn-block">Login</button>
-                                        </div>
-                                    </form>
-                                </li>
-                            </ul>
-                            <button class="btn btn-outline-success" type="button">Register</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="container">
-            <br><br><br>
+<%- include ./partials/header.ejs %>
+
+        <div class="container">            
             <!-- slideshow carousel -->
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="4500">
                 <div class="carousel-inner">
@@ -115,19 +68,5 @@
                     <small class="text-muted">Donec id elit non mi porta.</small>
                 </a>
             </div>
-            <br><br><br>
-            <!-- footer social media -->
-            <div class="container-fluid">
-                <ul class="list-inline">
-                    <li class="list-inline-item">Our social media </li>
-                    <li class="list-inline-item"><span class="fa fa-facebook-square fa-lg" aria-hidden="true"></span></li>
-                    <li class="list-inline-item"><span class="fa fa-twitter-square fa-lg" aria-hidden="true"></li>
-                    <li class="list-inline-item"><span class="fa fa-instagram fa-lg" aria-hidden="true"></li>
-                </ul>
-            </div>
-        </div>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    </body>
-</html>
+
+ <%- include ./partials/footer.ejs %>

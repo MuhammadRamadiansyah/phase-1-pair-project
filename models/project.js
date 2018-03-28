@@ -1,19 +1,180 @@
 'use strict';
+
+const sequelize = require('sequelize');
+const Op = sequelize.Op
+
 module.exports = (sequelize, DataTypes) => {
   var Project = sequelize.define('Project', {
     TagId: DataTypes.INTEGER,
-    title: DataTypes.STRING,
-    status: DataTypes.STRING,
-    location: DataTypes.STRING,
-    deadline: DataTypes.DATE,
-    level: DataTypes.STRING,
-    semester: DataTypes.INTEGER,
-    major: DataTypes.STRING,
-    summary: DataTypes.STRING
-  }, {});
+    title: {
+      type: DataTypes.STRING,
+      validate: {
+
+      }
+    },
+    status: {
+      type: DataTypes.STRING,
+      validate: {
+
+      }
+    },
+    location: {
+      type: DataTypes.STRING,
+      validate: {
+
+      }
+    },
+    deadline: {
+      type: DataTypes.DATE,
+      validate: {
+
+      }
+    },
+    level: {
+      type: DataTypes.STRING,
+      validate: {
+
+      }
+    },
+    semester: {
+      type: DataTypes.INTEGER,
+      validate: {
+
+      }
+    },
+    major: {
+      type: DataTypes.STRING,
+      validate: {
+
+      }
+    },
+    summary: DataTypes.STRING,
+    max_member: {
+      type: DataTypes.INTEGER,
+      validate: {
+
+      }
+    }
+  },{
+    hooks: {
+      beforeCreate: (project, options) => {
+
+      if(project.major == 'null' || project.title == '' || project.deadline == "Invalid Date" || project.location == 'null'){
+        throw new Error('Tidak boleh ada yang kosong')
+      }
+    }
+    }
+  });
   Project.associate = function(models) {
     Project.belongsTo(models.Tag)
     // associations can be defined here
   };
+
+  //Filter advanced research
+  Project.searchProject = function(objectFilter){
+
+    console.log(objectFilter);
+    let whereFilter = {}
+    if(objectFilter.title !== ''){
+      let titleSearch = '%' + objectFilter.title + '%'
+      whereFilter.title = {[Op.like]: titleSearch}
+    }
+    if(objectFilter.status !== 'null'){
+      whereFilter.status = objectFilter.status
+    }
+    if(objectFilter.location !== 'null'){
+      whereFilter.location = objectFilter.location
+    }
+    if(objectFilter.level !== 'null'){
+      whereFilter.level = objectFilter.level
+    }
+    whereFilter.semester = {[Op.gte]: objectFilter.semester}
+    if(objectFilter.tag !== 'null'){
+      whereFilter.tag = objectFilter.tag
+    }
+    if(objectFilter.deadline !== ''){
+      whereFilter.deadline = {[Op.gt]: new Date(objectFilter.deadline)}
+    }
+    if(objectFilter.major !== 'null'){
+      whereFilter.major = objectFilter.major
+    }
+    return new Promise((resolve,reject)=>{
+      Project.findAll({where: whereFilter})
+             .then(projects=>{
+               resolve(projects)
+             })
+    })
+
+  }
+
+  //Filter berdasarkan search title
+  Project.searchTitle = function(keyword){
+    return new Promise((resolve,reject)=>{
+      let titleSearch = '%' + keyword + '%'
+      Project.findAll({where: {title: {[Op.like]: titleSearch}}})
+             .then(projects=>{
+               resolve(projects)
+             })
+    })
+  }
+  //Filter berdasarkan minimum semester
+  Project.filterMinimumSemester = function(semester){
+    return new Promise((resolve,reject)=>{
+      Project.findAll({where: {semester: {[Op.gte]: semester}}})
+             .then(projects=>{
+               resolve(projects)
+             })
+    })
+  }
+
+  //Filter berdasarkan project baru
+  Project.filterNewProject = function(){
+    return new Promise((resolve,reject)=>{
+      Project.findAll({order: [['createdAt', 'ASC']]})
+             .then(projects=>{
+               resolve(projects)
+             })
+    })
+  }
+
+  //Filter berdasarkan deadline
+  Project.filterDeadline = function(){
+    return new Promise((resolve,reject)=>{
+      Project.findAll({order: [['deadline', 'ASC']]})
+             .then(projects=>{
+               resolve(projects)
+             })
+    })
+  }
+
+  //Filter berdasarkan jurusan
+  Project.filterMajor = function(major){
+    return new Promise((resolve,reject)=>{
+      Project.findAll({where: {major: major}})
+             .then(projects=>{
+               resolve(projects)
+             })
+    })
+  }
+
+  //Filter berdasarkan lokasi
+  Project.filterLocation = function(location){
+    return new Promise((resolve,reject)=>{
+      Project.findAll({where: {location:location}})
+             .then(projects=>{
+               resolve(projects)
+             })
+    })
+  }
+
+  //Filter berdasarkan tags
+  Project.filterTags = function(){
+    return new Promise((resolve,reject)=>{
+      sequelize.models.Tag()
+               .then(tags=>{
+                 resolve(tags)
+               })
+    })
+  }
   return Project;
 };

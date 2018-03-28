@@ -68,22 +68,29 @@
     <h2>Add Students Form</h2>
     <h4><a href="/students">Show All Students</a></h4>
 
-    <form action="/students/add" method="post">
+    <form action="/projects/add" method="post">
       Title:<br>
       <input type="text" name="title" value="">
-      <br>
-      Status:<br>
-      <select name="status" id="soflow">
-        <option type="text" value="open">Opened</option>
-        <option type="text" value="progress">On progress</option>
-        <option type="text" value="close">Closed</option>
-      </select>
       <br>
       Deadline:<br>
       <input type="date" name="deadline" id="soflow">
       <br>
+      Major:<br>
+      <select name="major" id="soflow">
+        <option type="text" value=null>Select an option</option>
+        <option type="text" value="Engineering">Engineering</option>
+        <option type="text" value="Medicine">Medicine</option>
+        <option type="text" value="IT">IT</option>
+        <option type="text" value="Science">Science</option>
+        <option type="text" value="Business">Business</option>
+        <option type="text" value="Management">Management</option>
+        <option type="text" value="Literature">Literature</option>
+        <option type="text" value="Psychology">Psychology</option>
+      </select>
+      <br>
       Location:<br>
       <select name="location" id="soflow">
+        <option type="text" value=null>Select an option</option>
         <option type="text" value="jakarta">Jakarta</option>
         <option type="text" value="bandung">Bandung</option>
         <option type="text" value="surabaya">Surabaya</option>
@@ -105,8 +112,12 @@
       Semester:<br>
       <input type="number" name="semester" min="1" max="12" value=1>
       <br>
+      Max Member:<br>
+      <input type="number" name="max_member" min="1" value=1>
+      <br>
       Tag:<br>
-      <select name="level" id="soflow">
+      <select name="tag" id="soflow">
+        <option type="text" value=null>Select an option</option>
         <%
         tags.forEach(function(tag){%>
           <option type="text" name= "tag" value=<%= tag.name%>><%= tag.name%></option>

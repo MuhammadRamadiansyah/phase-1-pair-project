@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-image: url('https://image.freepik.com/free-vector/school-building_23-2147521232.jpg');
+        background-size: cover;
+      }
+      h2 {
+        font-family: arial, sans-serif;
+        font-size: 25px;
+        text-align: center;
+      }
+      h4 {
+        font-family: arial, sans-serif;
+        font-size: 15px;
+        text-align: center;
+      }
+      table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+      }
+      td, th {
+          border: 1px solid #dddddd;
+          text-align: center;
+          padding: 8px;
+      }
+      tr:nth-child(even) {
+          background-color: #F5FFFA;
+      }
+      tr:nth-child(odd) {
+          background-color: #F0F8FF;
+      }
+      div {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        font-size: 8px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h2>Data Projects</h2>
+    <h4><a href="/">Home</a></h4>
+    <h4><a href="/projects/add">Add Student</a></h4>
+
+    <table>
+      <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>status</th>
+        <th>supervisor</th>
+        <th>location</th>
+        <th>deadline</th>
+        <th>options</th>
+      </tr>
+        <%
+          projects.forEach(function(project){%>
+          <tr>
+            <td><%= project.id%></td>
+            <td><%= project.title%></td>
+            <td><%= project.status%></td>
+            <td><%= project.supervisor%></td>
+            <td><%= project.location%></td>
+            <td><%= project.deadline.toDateString()%></td>
+
+            <td><a href="/projects" onclick="return confirm('Are you sure want delete this student?')">detail</a></td>
+          </tr>
+          <%})
+        %>
+    </table>
+
+    <form action="/projects" method="post">
+      Title:<br>
+      <input type="text" name="title" value="">
+      <br>
+      Status:<br>
+      <select name="status" id="soflow">
+        <option type="text" value=null>Select an option</option>
+        <option type="text" value="open">Opened</option>
+        <option type="text" value="progress">On progress</option>
+        <option type="text" value="close">Closed</option>
+      </select>
+      <br>
+      Location:<br>
+      <select name="location" id="soflow">
+        <option type="text" value=null>Select an option</option>
+        <option type="text" value="Jakarta">Jakarta</option>
+        <option type="text" value="Bandung">Bandung</option>
+        <option type="text" value="Surabaya">Surabaya</option>
+        <option type="text" value="Semarang">Semarang</option>
+        <option type="text" value="Lampung">Lampung</option>
+        <option type="text" value="Balik_papan">Balik Papan</option>
+        <option type="text" value="Makassar">Makassar</option>
+        <option type="text" value="Papua">Papua</option>
+      </select>
+      <br>
+      Major:<br>
+      <select name="major" id="soflow">
+        <option type="text" value=null>Select an option</option>
+        <option type="text" value="Engineering">Engineering</option>
+        <option type="text" value="Medicine">Medicine</option>
+        <option type="text" value="IT">IT</option>
+        <option type="text" value="Science">Science</option>
+        <option type="text" value="Business">Business</option>
+        <option type="text" value="Management">Management</option>
+        <option type="text" value="Literature">Literature</option>
+        <option type="text" value="Psychology">Psychology</option>
+      </select>
+      <br>
+      Level:<br>
+      <select name="level" id="soflow">
+        <option type="text" value="null">Select an option</option>
+        <option type="text" value="Beginner">Beginner</option>
+        <option type="text" value="Advanced">Advanced</option>
+        <option type="text" value="Senior">Senior</option>
+        <option type="text" value="Master">Master</option>
+      </select>
+      <br>
+      Semester:<br>
+      <input type="number" name="semester" min="1" max="12" value=1>
+      <br>
+      Deadline:<br>
+      <input type="date" name="deadline" id="soflow">
+      <br>
+      Tag:<br>
+      <select name="tag" id="soflow">
+        <option type="text" value=null>Select an option</option>
+        <%
+        tags.forEach(function(tag){%>
+          <option type="text" name= "tag" value=<%= tag.name%>><%= tag.name%></option>
+          <%})
+        %>
+      </select>
+      <br><br>
+      <input type="submit" value="filter">
+    </form>
+
+  </body>
+</html>

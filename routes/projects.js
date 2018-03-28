@@ -8,7 +8,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs')
 
 router.get('/add', function(req,res){
-  res.render('projects/form.ejs')
+  Model.Tag.findAll()
+       .then(tags=>{
+         res.render('projects/form.ejs', {tags:tags})
+       })
 })
 
 module.exports = router;

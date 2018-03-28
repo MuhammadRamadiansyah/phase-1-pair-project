@@ -107,10 +107,11 @@
       <br>
       Tag:<br>
       <select name="level" id="soflow">
-        <option type="text" value="beginner">Beginner</option>
-        <option type="text" value="advanced">Advanced</option>
-        <option type="text" value="senior">Senior</option>
-        <option type="text" value="master">Master</option>
+        <%
+        tags.forEach(function(tag){%>
+          <option type="text" name= "tag" value=<%= tag.name%>><%= tag.name%></option>
+          <%})
+        %>
       </select>
       <br>
       Summary:<br>

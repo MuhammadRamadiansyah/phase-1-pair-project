@@ -1,0 +1,19 @@
+{
+  "name": "phase-1-pair-project",
+  "version": "1.0.0",
+  "description": "Aplikasi web node.js sistem informasi antara mahasiswa dan dosen",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rg872/phase-1-pair-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rg872/phase-1-pair-project/issues"
+  },
+  "homepage": "https://github.com/rg872/phase-1-pair-project#readme"
+}

@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING
   }, {});
   Tag.associate = function(models) {
+    Tag.hasMany(models.Project)
     // associations can be defined here
   };
   return Tag;

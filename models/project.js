@@ -1,6 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Project = sequelize.define('Project', {
+    TagId: DataTypes.INTEGER,
     title: DataTypes.STRING,
     status: DataTypes.STRING,
     location: DataTypes.STRING,
@@ -11,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     summary: DataTypes.STRING
   }, {});
   Project.associate = function(models) {
+    Project.belongsTo(models.Tag)
     // associations can be defined here
   };
   return Project;

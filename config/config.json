@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "mubarak",
-    "database": "open_project_developement",
+    "username": "muhrama",
+    "password": "muhrama",
+    "database": "open_project_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
@@ -11,13 +11,13 @@
     "password": null,
     "database": "database_test",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgres"
   },
   "production": {
     "username": "root",
     "password": null,
     "database": "database_production",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgres"
   }
 }

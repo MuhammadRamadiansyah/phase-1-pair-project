@@ -1,0 +1,70 @@
+<%- include ./partials/header.ejs %>
+    <div class="container">
+        <h1>Register</h1>
+        <br><br>
+        <form>
+            <div class="form-group">
+                <label for="nama-user">Full Name</label>
+                <input type="text" class="form-control" name="nama" id="nama-user" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+                <label for="username-user">Username</label>
+                <input type="text" class="form-control" name="username" id="username-user" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label for="password-user">Password</label>
+                <input type="password" class="form-control" name="password" id="password-user" placeholder="Enter password">
+            </div>
+            <div class="form-group">
+                <label for="role-user">Role</label>
+                <select class="form-control" name="role" id="role-user">
+                    <option>Student</option>
+                    <option>Teacher</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="major-user">Major</label>
+                <select class="form-control" name="major" id="major-user">
+                    <option>Engineering</option>
+                    <option>IT</option>
+                    <option>Medicine</option>
+                    <option>Literature</option>
+                    <option>Science</option>
+                    <option>Business</option>
+                    <option>Management</option>
+                    <option>Psychology</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="phone-user">Phone Number</label>
+                <input type="text" class="form-control" name="phone" id="phone-user" placeholder="Enter phone number">
+            </div>
+            <div class="form-group" id="degree-user">
+                <label>Degree</label>
+                <select class="form-control" name="degree" >
+                    <option>S1</option>
+                    <option>S2</option>
+                    <option>S3</option>
+                </select>
+            </div>
+            <div class="form-group" id="semester-user">
+                <label>Semester</label>
+                <input type="number" class="form-control" name="semester" placeholder="Enter semester" min="1" max="12">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <script>
+                $(document).ready(function (){
+                    $("#role-user").change(function() {
+                        if ($(this).val() == "Student") {
+                            $("#semester-user").show();
+                            $("#degree-user").hide();
+                        }else{
+                            $("#semester-user").hide();
+                            $("#degree-user").show();
+                        } 
+                    });
+                });
+            </script>
+    </div>
+<%- include ./partials/footer.ejs %>

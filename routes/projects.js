@@ -27,13 +27,13 @@ router.post('/', function(req,res){
                 })
          })
 })
-
 router.get('/add', function(req,res){
   Model.Tag.findAll()
        .then(tags=>{
          res.render('projects/form.ejs', {tags:tags})
        })
 })
+
 
 router.post('/add', function(req,res){
 

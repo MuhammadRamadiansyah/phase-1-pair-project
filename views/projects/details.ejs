@@ -1,0 +1,98 @@
+<%- include ../partials/header.ejs %>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action" id="show-project-menu" href="/projects" role="tab">Show All Projects</a>
+                <br>
+                <a class="list-group-item list-group-item-action" id="show-project-menu" href="/projects/<%=project.id%>/details" role="tab">Detail Project</a>
+                <br>
+                <%if(checkRequirement(project, student.major,student.semester,student.level)){%>
+                  <a class="list-group-item list-group-item-action" id="request-notif-menu" data-toggle="list" href="#request-notif" role="tab">Apply</a>
+                  <%}
+                %>
+
+
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="profile" role="tabpanel">
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h2 class="mb-1"><%= project.title%></h2>
+                            <small>3 days ago</small>
+                        </div>
+                        <div class="d-flex w-100 justify-content-between">
+                          <h5 class="mb-1"> Supervisor : <%= project.supervisor%></h5>
+                        </div>
+                        <div class="d-flex w-100 justify-content-between">
+                          <h5 class="mb-1"> Deadline : <%= project.deadline.toDateString()%></h5>
+                        </div>
+                        <div class="d-flex w-100 justify-content-between">
+                          <h5 class="mb-1">Requirement : <div class="d-flex w-100 justify-content-between">
+                            <ul>
+                              <li>Major : <%= project.major %></li>
+                              <li>Minimum Semester : <%= project.semester %></li>
+                              <li>Minimum Level : <%= project.level%></li>
+                            </ul>
+                          </div>
+                        </h5>
+
+                        </div>
+
+                        <% if(project.Tag!=null){%>
+                          <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1"> Tag : <%=project.Tag.name%></h5>
+                          </div>
+                        <%}else{%>
+                          <h5 class="mb-1"> Tag : None</h5>
+                        <%} %>
+                        <div class="d-flex w-100 justify-content-between">
+                          <h5 class="mb-1"> Location : <%= project.location%></h5>
+                        </div>
+                        <div class="d-flex w-100 justify-content-between">
+                          <h5 class="mb-1"> Description : <%= project.summary%></h5>
+                        </div>
+
+                        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                        <small>Donec id elit non mi porta.</small>
+                    </a>
+
+                    </div>
+
+                    <div class="tab-pane fade" id="request-notif" role="tabpanel">
+
+                      <div class="d-flex w-100 justify-content-between">
+                          <h2 class="mb-1">Tell me about yourself</h2>
+                      </div>
+                      <form action="/projects" method="post">
+
+                          <div class="form-group">
+                              <label for="swot">Strength, Weakness, Opportunity, and Threat</label>
+                              <textarea type="text-area" class="form-control" style="overflow:auto;resize:none" rows="7" name="swot" id="text-area" placeholder="Enter description"></textarea>
+                          </div>
+
+                          <div class="form-group">
+                              <label for="background">Background</label>
+                              <textarea type="text-area" class="form-control" style="overflow:auto;resize:none" rows="7" name="Background" id="text-area" placeholder="Enter description"></textarea>
+                          </div>
+
+                          <div class="form-group">
+                              <label for="motivation">Motivation</label>
+                              <textarea type="text-area" class="form-control" style="overflow:auto;resize:none" rows="5" name="motivation" id="text-area" placeholder="Enter description"></textarea>
+                          </div>
+
+                          <div class="form-group">
+                              <label for="reason">Why we have to choose you?</label>
+                              <textarea type="text-area" class="form-control" style="overflow:auto;resize:none" rows="5" name="reason" id="text-area" placeholder="Enter description"></textarea>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Apply</button>
+                        </form>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<%- include ../partials/footer.ejs %>

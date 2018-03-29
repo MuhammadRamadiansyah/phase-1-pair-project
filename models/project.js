@@ -62,7 +62,7 @@ module.exports = (sequelize, DataTypes) => {
       if(project.major == 'null' || project.title == '' || project.deadline == "Invalid Date" || project.location == 'null'){
         throw new Error('Tidak boleh ada yang kosong')
       }
-    }
+     }
     }
   });
   Project.associate = function(models) {
@@ -73,38 +73,63 @@ module.exports = (sequelize, DataTypes) => {
   //Filter advanced research
   Project.searchProject = function(objectFilter){
 
-    console.log(objectFilter);
     let whereFilter = {}
     if(objectFilter.title !== ''){
       let titleSearch = '%' + objectFilter.title + '%'
       whereFilter.title = {[Op.like]: titleSearch}
     }
-    if(objectFilter.status !== 'null'){
-      whereFilter.status = objectFilter.status
-    }
     if(objectFilter.location !== 'null'){
       whereFilter.location = objectFilter.location
     }
     if(objectFilter.level !== 'null'){
-      whereFilter.level = objectFilter.level
+      if(objectFilter.level == "Master"){
+        whereFilter.level = {[Op.like]: ['%Master%']}
+      }else if(objectFilter.level == "Senior"){
+        whereFilter.level = {[Op.like]: ['%Master%','%Senior%']}
+      }else if(objectFilter.level == "Advanced"){
+        whereFilter.level = {[Op.like]: ['%Master%', '%Advanced%', '%Senior%']}
+      }else if(objectFilter.level == "Beginner"){
+        whereFilter.level = {[Op.like]: ['%Master%', '%Advanced%', '%Senior%','%Beginner%']}
+      }
     }
-    whereFilter.semester = {[Op.gte]: objectFilter.semester}
-    if(objectFilter.tag !== 'null'){
-      whereFilter.tag = objectFilter.tag
+    if(objectFilter.semester !== ''){
+      whereFilter.semester = {[Op.gte]: objectFilter.semester}
+    }else{
+      whereFilter.semester = {[Op.gte]: 1}
     }
+
     if(objectFilter.deadline !== ''){
       whereFilter.deadline = {[Op.gt]: new Date(objectFilter.deadline)}
     }
     if(objectFilter.major !== 'null'){
       whereFilter.major = objectFilter.major
     }
-    return new Promise((resolve,reject)=>{
-      Project.findAll({where: whereFilter})
-             .then(projects=>{
-               resolve(projects)
-             })
-    })
 
+    if(objectFilter.tag != 'null'){
+      return new Promise(function(resolve,reject){
+        sequelize.models.Tag.findOne({where: {name: objectFilter.tag}})
+          .then(tag=>{
+             whereFilter.TagId = tag.id;
+
+             Project.findAll({where: whereFilter})
+                    .then(projects=>{
+                      console.log('searchProject invoked');
+                      resolve(projects)
+                    }).catch(err=>{
+                      reject(err)
+                    })
+
+        })
+      })
+    }
+    if(objectFilter.tag == 'null'){
+      return new Promise((resolve,reject)=>{
+        Project.findAll({where: whereFilter})
+               .then(projects=>{
+                 resolve(projects)
+               })
+             })
+    }
   }
 
   //Filter berdasarkan search title
@@ -168,9 +193,10 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   //Filter berdasarkan tags
-  Project.filterTags = function(){
+  Project.filterTags = function(tagname){
+
     return new Promise((resolve,reject)=>{
-      sequelize.models.Tag()
+      sequelize.models.Tag({where: {name:tagname}})
                .then(tags=>{
                  resolve(tags)
                })

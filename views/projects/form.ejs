@@ -1,125 +1,90 @@
-<html>
-  <head>
-    <style>
-      body {
-        background-image: url('https://image.freepik.com/free-vector/school-building_23-2147521232.jpg');
-        background-size: cover;
-      }
-      h2 {
-        font-family: arial, sans-serif;
-        font-size: 25px;
-        text-align: center;
-      }
-      h4 {
-        font-family: arial, sans-serif;
-        font-size: 15px;
-        text-align: center;
-      }
-      input[type=text], select {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      font-size: 18px;
-      display: inline-block;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-      }
-      input[type=submit] {
-          width: 200px;
-          background-color: #00BFFF;
-          color: white;
-          padding: 14px 20px;
-          margin: 8px 0;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-      }
-      input[type=submit]:hover {
-          background-color: #4169E1;
-      }
-      div {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        font-size: 8px;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        background-color: red;
-      }
-      select#soflow{
-        width: 100%;
-        height: 50px;
-        padding: 12px 20px;
-        margin: 8px 0;
-        font-size: 18px;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        background-color: white;
-      }
-    </style>
-  </head>
-  <body>
-
-    <h2>Add Students Form</h2>
-    <h4><a href="/students">Show All Students</a></h4>
-
-    <form action="/students/add" method="post">
-      Title:<br>
-      <input type="text" name="title" value="">
-      <br>
-      Status:<br>
-      <select name="status" id="soflow">
-        <option type="text" value="open">Opened</option>
-        <option type="text" value="progress">On progress</option>
-        <option type="text" value="close">Closed</option>
-      </select>
-      <br>
-      Deadline:<br>
-      <input type="date" name="deadline" id="soflow">
-      <br>
-      Location:<br>
-      <select name="location" id="soflow">
-        <option type="text" value="jakarta">Jakarta</option>
-        <option type="text" value="bandung">Bandung</option>
-        <option type="text" value="surabaya">Surabaya</option>
-        <option type="text" value="semarang">Semarang</option>
-        <option type="text" value="lampung">Lampung</option>
-        <option type="text" value="balik_papan">Balik Papan</option>
-        <option type="text" value="makassar">Makassar</option>
-        <option type="text" value="papua">Papua</option>
-      </select>
-      <br>
-      Level:<br>
-      <select name="level" id="soflow">
-        <option type="text" value="beginner">Beginner</option>
-        <option type="text" value="advanced">Advanced</option>
-        <option type="text" value="senior">Senior</option>
-        <option type="text" value="master">Master</option>
-      </select>
-      <br>
-      Semester:<br>
-      <input type="number" name="semester" min="1" max="12" value=1>
-      <br>
-      Tag:<br>
-      <select name="level" id="soflow">
-        <%
-        tags.forEach(function(tag){%>
-          <option type="text" name= "tag" value=<%= tag.name%>><%= tag.name%></option>
-          <%})
-        %>
-      </select>
-      <br>
-      Summary:<br>
-      <textarea rows="5" cols="230"></textarea>
-      <br><br>
-      <input type="submit" value="ADD STUDENT">
-    </form>
-
-  </body>
-
-</html>
+<%- include ../partials/header.ejs %>
+    <div class="container">
+        <h1>Register</h1>
+        <br><br>
+        <form action="/projects/add" method="post">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" name="title" id="nama-user" placeholder="Enter title">
+            </div>
+            <div class="form-group">
+                <label for="major-user">location</label>
+                <select class="form-control" name="location" id="major-user">
+                   <option type="text" value=null>Choose location</option>
+                   <option type="text" value="Jakarta">Jakarta</option>
+                   <option type="text" value="Bandung">Bandung</option>
+                   <option type="text" value="Surabaya">Surabaya</option>
+                   <option type="text" value="Semarang">Semarang</option>
+                   <option type="text" value="Lampung">Lampung</option>
+                   <option type="text" value="Balik_papan">Balik Papan</option>
+                   <option type="text" value="Makassar">Makassar</option>
+                   <option type="text" value="Papua">Papua</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="major-user">Major</label>
+                <select class="form-control" name="major" id="major-user">
+                  <option type="text" value=null>Choose major</option>
+                  <option type="text" value="Engineering">Engineering</option>
+                  <option type="text" value="Medicine">Medicine</option>
+                  <option type="text" value="IT">IT</option>
+                  <option type="text" value="Science">Science</option>
+                  <option type="text" value="Business">Business</option>
+                  <option type="text" value="Management">Management</option>
+                  <option type="text" value="Literature">Literature</option>
+                  <option type="text" value="Psychology">Psychology</option>
+                </select>
+            </div>
+            <div class="form-group" id="degree-user">
+                <label>level</label>
+                <select class="form-control" name="level" >
+                  <option type="text" value="Beginner">Beginner</option>
+                  <option type="text" value="Advanced">Advanced</option>
+                  <option type="text" value="Senior">Senior</option>
+                  <option type="text" value="Master">Master</option>
+                </select>
+            </div>
+            <div class="form-group" id="semester-user">
+                <label>Semester</label>
+                <input type="number" class="form-control" name="semester" placeholder="Enter semester" min="1" max="12">
+            </div>
+            <div class="form-group" id="semester-user">
+                <label>Max Member</label>
+                <input type="number" class="form-control" name="max_member" placeholder="Enter max member" min="1">
+            </div>
+            <div class="form-group">
+                <label for="deadline">Deadline</label>
+                <input type="date" class="form-control" name="deadline" placeholder="Enter deadline date">
+            </div>
+            <div class="form-group" id="degree-user">
+                <label>Tag</label>
+                <select class="form-control" name="tag" >
+                  <option type="text" value=null>Select an option</option>
+                  <%
+                    tags.forEach(function(tag){%>
+                      <option type="text" name= "tag" value=<%= tag.name%>><%= tag.name%></option>
+                      <%})
+                  %>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="title">Summary</label>
+                <textarea type="text-area" class="form-control" style="overflow:auto;resize:none" rows="5" name="summary" id="text-area" placeholder="Enter description"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <script>
+                $(document).ready(function (){
+                    $("#role-user").change(function() {
+                        if ($(this).val() == "Student") {
+                            $("#semester-user").show();
+                            $("#degree-user").hide();
+                        }else{
+                            $("#semester-user").hide();
+                            $("#degree-user").show();
+                        }
+                    });
+                });
+            </script>
+    </div>
+<%- include ../partials/footer.ejs %>

@@ -38,12 +38,16 @@ router.post('/', function(req,res){
                        })
                 })
          })
+<<<<<<< HEAD
          .catch(err=>{
            console.log(err);
       })
 
 })
 
+=======
+})
+>>>>>>> 0683b44cbda318ea5526870245671c7a43ca81cd
 router.get('/add', function(req,res){
   Model.Tag.findAll()
        .then(tags=>{
@@ -51,6 +55,10 @@ router.get('/add', function(req,res){
        })
 })
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0683b44cbda318ea5526870245671c7a43ca81cd
 router.post('/add', function(req,res){
 
   let title = req.body.title;
@@ -115,7 +123,10 @@ router.get('/:project_id/details', function(req,res){
               })
        })
 })
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 0683b44cbda318ea5526870245671c7a43ca81cd
 module.exports = router;

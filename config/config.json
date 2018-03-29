@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "muhrama",
-    "password": "muhrama",
-    "database": "open_project_development",
+    "username": "postgres",
+    "password": "mubarak",
+    "database": "open_project_developement",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

@@ -7,19 +7,22 @@
                     <div class="carousel-item active">
                         <img class="d-block w-100 h-85" src="./views/img/carousel-1.jpeg" alt="First slide">
                         <div class="carousel-caption">
-                            <a href="https://www.google.co.uk/" target="_blank"><button type="button" class="btn btn-success btn-lg">Get started</button></a>
+                            <h1>The journey of a thousand miles begins with one step<h1>
+                            <a href="/projects/"><button type="button" class="btn btn-success btn-lg">Get started</button></a>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img class="d-block w-100 h-85" src="./views/img/carousel-2.jpeg" alt="Second slide">
                         <div class="carousel-caption">
-                            <a href="https://www.google.co.uk/" target="_blank"><button type="button" class="btn btn-success btn-lg">Get started</button></a>
+                            <h1>Always remember that you are absolutely unique. Just like everyone else.<h1>
+                            <a href="/projects/"><button type="button" class="btn btn-success btn-lg">Get started</button></a>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img class="d-block w-100 h-85" src="./views/img/carousel-3.jpg" alt="Third slide">
                         <div class="carousel-caption">
-                            <a href="https://www.google.co.uk/" target="_blank"><button type="button" class="btn btn-success btn-lg">Get started</button></a>
+                            <h1>Learning never exhausts the mind<h1>
+                            <a href="/projects/"><button type="button" class="btn btn-success btn-lg">Get started</button></a>
                         </div>
                     </div>
                 </div>
@@ -27,46 +30,16 @@
             <br><br><br>
             <!-- list recent project -->
             <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">List group item heading</h5>
-                        <small>3 days ago</small>
-                    </div>
-                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                    <small>Donec id elit non mi porta.</small>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">List group item heading</h5>
-                        <small class="text-muted">3 days ago</small>
-                    </div>
-                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                    <small class="text-muted">Donec id elit non mi porta.</small>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">List group item heading</h5>
-                    <small class="text-muted">3 days ago</small>
-                    </div>
-                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                    <small class="text-muted">Donec id elit non mi porta.</small>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">List group item heading</h5>
-                    <small class="text-muted">3 days ago</small>
-                    </div>
-                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                    <small class="text-muted">Donec id elit non mi porta.</small>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">List group item heading</h5>
-                    <small class="text-muted">3 days ago</small>
-                    </div>
-                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                    <small class="text-muted">Donec id elit non mi porta.</small>
-                </a>
+                <% projects.forEach(function(project){ %>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1"><%= project.title %></h5>
+                                <small><%= project.createdAt.toDateString() %></small>
+                            </div>
+                            <p class="mb-1"><%= project.summary %></p>
+                            <small>author: muklis</small>
+                        </a>
+                <% }) %>                                
             </div>
 
  <%- include ./partials/footer.ejs %>

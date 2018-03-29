@@ -2,10 +2,10 @@
     <div class="container">
         <h1>Register</h1>
         <br><br>
-        <form>
+        <form method="POST" action="/register">
             <div class="form-group">
                 <label for="nama-user">Full Name</label>
-                <input type="text" class="form-control" name="nama" id="nama-user" placeholder="Enter name">
+                <input type="text" class="form-control" name="name" id="nama-user" placeholder="Enter name">
             </div>
             <div class="form-group">
                 <label for="username-user">Username</label>
@@ -14,6 +14,10 @@
             <div class="form-group">
                 <label for="password-user">Password</label>
                 <input type="password" class="form-control" name="password" id="password-user" placeholder="Enter password">
+            </div>
+            <div class="form-group">
+                <label for="email-user">Email</label>
+                <input type="email" class="form-control" name="email" id="email-user" placeholder="Enter email">
             </div>
             <div class="form-group">
                 <label for="role-user">Role</label>

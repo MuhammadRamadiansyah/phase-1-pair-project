@@ -1,0 +1,159 @@
+<%- include ./partials/header.ejs %>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action active" id="profile-menu" data-toggle="list" href="#profile" role="tab">Profile</a>
+                <a class="list-group-item list-group-item-action" id="upload-project-menu" data-toggle="list" href="#upload-project" role="tab">Upload Project</a>
+                <a class="list-group-item list-group-item-action" id="show-project-menu" data-toggle="list" href="#show-project" role="tab">Show Project</a>
+                <a class="list-group-item list-group-item-action" id="request-notif-menu" data-toggle="list" href="#request-notif" role="tab">Request</a>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="profile" role="tabpanel">
+                        <form>
+                            <div class="form-group">
+                                <label for="nama-user">Full Name</label>
+                                <input type="text" class="form-control" name="nama" id="nama-user" placeholder="Enter name">
+                            </div>
+                            <div class="form-group">
+                                <label for="username-user">Username</label>
+                                <input type="text" class="form-control" name="username" id="username-user" placeholder="Enter username">
+                            </div>
+                            <div class="form-group">
+                                <label for="password-user">Password</label>
+                                <input type="password" class="form-control" name="password" id="password-user" placeholder="Enter password">
+                            </div>
+                            <div class="form-group">
+                                <label for="role-user">Role</label>
+                                <select class="form-control" name="role" id="role-user">
+                                    <option>Student</option>
+                                    <option>Teacher</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="major-user">Major</label>
+                                <select class="form-control" name="major" id="major-user">
+                                    <option>Engineering</option>
+                                    <option>IT</option>
+                                    <option>Medicine</option>
+                                    <option>Literature</option>
+                                    <option>Science</option>
+                                    <option>Business</option>
+                                    <option>Management</option>
+                                    <option>Psychology</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone-user">Phone Number</label>
+                                <input type="text" class="form-control" name="phone" id="phone-user" placeholder="Enter phone number">
+                            </div>
+                            <div class="form-group" id="degree-user">
+                                <label>Degree</label>
+                                <select class="form-control" name="degree" >
+                                    <option>S1</option>
+                                    <option>S2</option>
+                                    <option>S3</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="semester-user">
+                                <label>Semester</label>
+                                <input type="number" class="form-control" name="semester" placeholder="Enter semester" min="1" max="12">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                </div>
+                <div class="tab-pane fade" id="upload-project" role="tabpanel">upload</div>
+                <div class="tab-pane fade" id="show-project" role="tabpanel">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">List group item heading</h5>
+                                    <small>3 days ago</small>
+                                </div>
+                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                <small>Donec id elit non mi porta.</small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">List group item heading</h5>
+                                    <small class="text-muted">3 days ago</small>
+                                </div>
+                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                <small class="text-muted">Donec id elit non mi porta.</small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">List group item heading</h5>
+                                <small class="text-muted">3 days ago</small>
+                                </div>
+                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                <small class="text-muted">Donec id elit non mi porta.</small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">List group item heading</h5>
+                                <small class="text-muted">3 days ago</small>
+                                </div>
+                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                <small class="text-muted">Donec id elit non mi porta.</small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">List group item heading</h5>
+                                <small class="text-muted">3 days ago</small>
+                                </div>
+                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                <small class="text-muted">Donec id elit non mi porta.</small>
+                            </a>
+                        </div>
+                </div>
+                <div class="tab-pane fade" id="request-notif" role="tabpanel">
+                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">List group item heading</h5>
+                                <small>3 days ago</small>
+                            </div>
+                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                            <small>Donec id elit non mi porta.</small>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">List group item heading</h5>
+                                <small class="text-muted">3 days ago</small>
+                            </div>
+                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                            <small class="text-muted">Donec id elit non mi porta.</small>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">List group item heading</h5>
+                            <small class="text-muted">3 days ago</small>
+                            </div>
+                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                            <small class="text-muted">Donec id elit non mi porta.</small>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">List group item heading</h5>
+                            <small class="text-muted">3 days ago</small>
+                            </div>
+                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                            <small class="text-muted">Donec id elit non mi porta.</small>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">List group item heading</h5>
+                            <small class="text-muted">3 days ago</small>
+                            </div>
+                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                            <small class="text-muted">Donec id elit non mi porta.</small>
+                        </a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<%- include ./partials/footer.ejs %>

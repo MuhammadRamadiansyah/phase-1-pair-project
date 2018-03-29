@@ -84,15 +84,19 @@
                           <a href="/projects/<%=project.id%>/details" class="list-group-item list-group-item-action flex-column align-items-start">
                               <div class="d-flex w-100 justify-content-between">
                                   <h5 class="mb-1"><%= project.title%></h5>
-                                  <%if(checkRequirement(project, student.major,student.semester,student.level)){%>
-                                    <small><span class="fa fa-unlock fa-lg" aria-hidden="true"></span></small>
-                                    <%}else{%>
-                                      <small><span class="fa fa-lock fa-lg" aria-hidden="true"></span></small>
-                                      <%}
+                                  <%if(student){%>
+                                    <%if(checkRequirement(project, student.major,student.semester,student.level)){%>
+                                      <small><span class="fa fa-unlock fa-lg" aria-hidden="true"></span></small>
+                                      <%}else{%>
+                                        <small><span class="fa fa-lock fa-lg" aria-hidden="true"></span></small>
+                                        <%}
+                                    %>
+                                    <%}
                                   %>
+
                               </div>
                               <p class="mb-1"><%=project.summary%></p>
-                              <small>Nama Supervisor</small>
+                              <h6> Author : <%= assignedSupervisor(project)%></h6>
                           </a>
                           <br>
                           <%})

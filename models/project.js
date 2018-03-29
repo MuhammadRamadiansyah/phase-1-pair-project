@@ -63,10 +63,16 @@ module.exports = (sequelize, DataTypes) => {
         throw new Error('Tidak boleh ada yang kosong')
       }
      }
+   },
+    afterCreate: (project, options) => {
+
+     sequelize.models.UserProject.create()
     }
   });
   Project.associate = function(models) {
     Project.belongsTo(models.Tag)
+    Project.belongsToMany(models.Student, {through: models.UserProject});
+    Project.belongsToMany(models.Lecturer, {through: models.UserProject});
     // associations can be defined here
   };
 

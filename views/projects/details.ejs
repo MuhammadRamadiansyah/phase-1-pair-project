@@ -7,10 +7,14 @@
                 <br>
                 <a class="list-group-item list-group-item-action" id="show-project-menu" href="/projects/<%=project.id%>/details" role="tab">Detail Project</a>
                 <br>
-                <%if(checkRequirement(project, student.major,student.semester,student.level)){%>
-                  <a class="list-group-item list-group-item-action" id="request-notif-menu" data-toggle="list" href="#request-notif" role="tab">Apply</a>
+                <%if(student){%>
+                  <%if(checkRequirement(project, student.major,student.semester,student.level)){%>
+                    <a class="list-group-item list-group-item-action"  data-toggle="list" href="#request-notif" role="tab">Apply</a>
+                    <%}
+                  %>
                   <%}
                 %>
+
 
 
                 </div>
@@ -66,7 +70,9 @@
                       <div class="d-flex w-100 justify-content-between">
                           <h2 class="mb-1">Tell me about yourself</h2>
                       </div>
-                      <form action="/projects" method="post">
+                      <form action="/users/student/apply" method="post">
+                           <input name="ProjectId" type="hidden" value=<%= project.id%>>
+                           <input name="StudentId" type="hidden" value=<%= student.id%>>
 
                           <div class="form-group">
                               <label for="swot">Strength, Weakness, Opportunity, and Threat</label>

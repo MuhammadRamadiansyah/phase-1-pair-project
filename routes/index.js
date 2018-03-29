@@ -34,7 +34,7 @@ router.post('/register', function(req,res){
   let new_user;
   let plain_password = req.body.password;
   if(req.body.role === 'Student'){
-    new_user = 
+    new_user =
     {
       name: req.body.name,
       username: req.body.username,
@@ -61,12 +61,12 @@ router.post('/register', function(req,res){
          })
          .catch(err=>{
            console.log(err);
-           res.redirect('/projects/add')
+           res.redirect('/')
          })
         });
     });
   } else {
-    new_user = 
+    new_user =
     {
       name: req.body.name,
       username: req.body.username,
@@ -87,7 +87,7 @@ router.post('/register', function(req,res){
 
           Model.Lecturer.create(new_user)
          .then(()=>{
-           res.redirect('/')
+           res.redirect('/projects')
          })
          .catch(err=>{
            console.log(err);
@@ -98,11 +98,5 @@ router.post('/register', function(req,res){
   }
 });
 
-router.post('/login', function(req,res){
-  let username = req.body.username;
-  let password = req.body.password;
-
-  
-});
 
 module.exports = router;

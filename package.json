@@ -4,7 +4,7 @@
   "description": "Aplikasi web node.js sistem informasi antara mahasiswa dan dosen",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,12 @@
   },
   "homepage": "https://github.com/rg872/phase-1-pair-project#readme",
   "dependencies": {
+    "bcrypt": "^1.0.3",
+    "ejs": "^2.5.8",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "nodemon": "^1.17.2",
+    "path": "^0.12.7",
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.37.4"
